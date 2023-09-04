@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content=""/>
+        <title> </title>
+        <link rel="stylesheet" href="styles/style.css" type="text/css"/>
+     
+        <style>
+        </style>
+    </head>
+
+    <body>
+        <h1>Lista de Produtos</h1>
+        <label for="input">Item</label>
+        <input type="textbox" id="input">
+            
+        <button id="adicionar" onclick = "
+                let produto = {};
+                produto['nome'] = input.value
+                let quantidade = prompt('Quantidade: ');
+                produto['quantidade'] = quantidade;
+                let preço = prompt('Preço: ');
+                produto['preço'] = parseFloat(preço);
+                //mostrar.innerText = JSON.stringify(produto);
+                lista.push(produto)
+                mostrar.innerText = JSON.stringify(lista);              
+                    ">adicionar</button>
+
+        <button onclick = "
+            let remover = prompt('Produto a remover: ');
+            lista = lista.filter((produto) => produto.nome != remover)
+            mostrar.innerText = JSON.stringify(lista);
+        ">remover</button>
+            
+        <p id = "mostrar"></p><br>
+            
+        <button onclick = "
+            localStorage.setItem('listaProdutos', JSON.stringify(lista));    
+            alert('Salvo com sucesso.');    
+        ">salvar</button>
+            
+        <button onclick = "
+            let mostrarProduto = prompt('Aperte ok para mostar toda a lista, ou digite o nome do produto que deseja ver');
+            if (mostrarProduto === '') {
+                mostrar.innerText = JSON.stringify(lista);
+            } else {
+                let produtoEncontrado = lista.find(produto => produto.nome === mostrarProduto);
+                mostrar.innerText = JSON.stringify(produtoEncontrado);
+                if (!produtoEncontrado) {
+                    alert(`${mostrarProduto} não está na lista`);    
+                }
+            }
+        ">mostrar</button>
+            
+         
+        <script src="scripts/script.js">
+        </script>
+    </body>
+ </html>
