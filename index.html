@@ -22,19 +22,23 @@
                 let quantidade = prompt('Quantidade: ');
                 produto['quantidade'] = quantidade;
                 let preço = prompt('Preço: ');
-                produto['preço'] = parseFloat(preço);
-                //mostrar.innerText = JSON.stringify(produto);
+                produto['preço'] = `R$${preço}`
                 lista.push(produto)
-                mostrar.innerText = JSON.stringify(lista);              
+                let novoP = document.createElement('p');
+                novoP.textContent = JSON.stringify(produto);
+                div.appendChild(novoP);
+                input.value = ''             
                     ">adicionar</button>
 
         <button onclick = "
-            let remover = prompt('Produto a remover: ');
+            let remover = input.value
             lista = lista.filter((produto) => produto.nome != remover)
             mostrar.innerText = JSON.stringify(lista);
         ">remover</button>
             
-        <p id = "mostrar"></p><br>
+        //<p id = "mostrar"></p><br>
+
+        <div id="div"></div>
             
         <button onclick = "
             localStorage.setItem('listaProdutos', JSON.stringify(lista));    
@@ -44,7 +48,17 @@
         <button onclick = "
             let mostrarProduto = prompt('Aperte ok para mostar toda a lista, ou digite o nome do produto que deseja ver');
             if (mostrarProduto === '') {
-                mostrar.innerText = JSON.stringify(lista);
+                // Remove all existing <p> elements
+//while (div.children[0]...também funciona
+        while (div.firstChild) {
+            div.removeChild(div.firstChild);
+        }
+                for (let i = 0; i < lista.length; i++) {
+                  let novoP = document.createElement('p');
+        novoP.textContent = JSON.stringify(lista[i]);
+        div.appendChild(novoP);
+}
+                //mostrar.innerText = JSON.stringify(lista);
             } else {
                 let produtoEncontrado = lista.find(produto => produto.nome === mostrarProduto);
                 mostrar.innerText = JSON.stringify(produtoEncontrado);
