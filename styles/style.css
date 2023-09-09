@@ -4,9 +4,19 @@ button {
   font-weight: bold;
   font-size: 20px;
 }
+
+.adicionar {
+  background-color: "green";
+}
+
+.remover {
+  background-color: "red";
+}
+
 #btDiv {
   margin-top: 30px;
 }
+
 input {
   width:500px;
   height:30px;
