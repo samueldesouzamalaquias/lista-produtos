@@ -5,7 +5,7 @@
         <meta charset="utf-8"/>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> </title>
+        <title>Lista Produtos</title>
         <link rel="stylesheet" href="styles/style.css" type="text/css"/>
      
         <style>
@@ -31,8 +31,19 @@
                 input.value = ''             
                     ">adicionar</button>
 
+        <button onclick = "
+            let remover = input.value
+            lista = lista.filter((produto) => produto.nome != remover)
+            mostrar.innerText = JSON.stringify(lista);
+        ">remover</button>
+            
+        <button onclick = "
+            localStorage.setItem('listaProdutos', JSON.stringify(lista));    
+            alert('Salvo com sucesso.');    
+        ">salvar</button>
+
         <button onclick="
-            lista.sort(itemA, itemB) => itemA.nome.localCompare(itemB.nome);
+            lista.sort(itemA, itemB) => itemA.nome.localeCompare(itemB.nome);
             while (div.firstChild) {div.removeChild(div.firstChild);}
             for (cadaItem of lista) {
                 let novaLi = document.createElement('li');
@@ -42,36 +53,18 @@
             ">
             ordenar
         </button>
-
-        <button onclick = "
-            let remover = input.value
-            lista = lista.filter((produto) => produto.nome != remover)
-            mostrar.innerText = JSON.stringify(lista);
-        ">remover</button>
-            
-        //<p id = "mostrar"></p><br>
-
-        <div id="div"></div>
-            
-        <button onclick = "
-            localStorage.setItem('listaProdutos', JSON.stringify(lista));    
-            alert('Salvo com sucesso.');    
-        ">salvar</button>
             
         <button onclick = "
             let mostrarProduto = prompt('Aperte ok para mostar toda a lista, ou digite o nome do produto que deseja ver');
             if (mostrarProduto === '') {
-                // Remove all existing <p> elements
-//while (div.children[0]...também funciona
         while (div.firstChild) {
             div.removeChild(div.firstChild);
         }
                 for (let i = 0; i < lista.length; i++) {
-                  let novoP = document.createElement('p');
-        novoP.textContent = JSON.stringify(lista[i]);
-        div.appendChild(novoP);
+                  let novaLi = document.createElement('li');
+        novaLi.textContent = JSON.stringify(lista[i]);
+        div.appendChild(novaLi);
 }
-                //mostrar.innerText = JSON.stringify(lista);
             } else {
                 let produtoEncontrado = lista.find(produto => produto.nome === mostrarProduto);
                 mostrar.innerText = JSON.stringify(produtoEncontrado);
@@ -80,8 +73,9 @@
                 }
             }
         ">mostrar</button>
-            
-         
+        
+        <div id="div"></div>
+        
         <script src="scripts/script.js">
         </script>
     </body>
