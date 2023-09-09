@@ -36,44 +36,45 @@
             lista = lista.filter((produto) => produto.nome != remover)
             mostrar.innerText = JSON.stringify(lista);
         ">remover</button>
-            
-        <button onclick = "
-            localStorage.setItem('listaProdutos', JSON.stringify(lista));    
-            alert('Salvo com sucesso.');    
-        ">salvar</button>
-
-        <button onclick="
-            lista.sort((itemA, itemB) => itemA.nome.localeCompare(itemB.nome));
-            while (div.firstChild) {div.removeChild(div.firstChild);}
-            for (cadaItem of lista) {
-                let novaLi = document.createElement('li');
-                novaLi.textContent = JSON.stringify(cadaItem);
-                div.appendChild(novaLi);
-            }
-            ">
-            ordenar
-        </button>
-            
-        <button onclick = "
-            let mostrarProduto = prompt('Aperte ok para mostar toda a lista, ou digite o nome do produto que deseja ver');
-            if (mostrarProduto === '') {
-        while (div.firstChild) {
-            div.removeChild(div.firstChild);
-        }
-                for (let i = 0; i < lista.length; i++) {
-                  let novaLi = document.createElement('li');
-        novaLi.textContent = JSON.stringify(lista[i]);
-        div.appendChild(novaLi);
-}
-            } else {
-                let produtoEncontrado = lista.find(produto => produto.nome === mostrarProduto);
-                mostrar.innerText = JSON.stringify(produtoEncontrado);
-                if (!produtoEncontrado) {
-                    alert(`${mostrarProduto} não está na lista`);    
-                }
-            }
-        ">mostrar</button>
         
+        <div>  
+            <button onclick = "
+                localStorage.setItem('listaProdutos', JSON.stringify(lista));    
+                alert('Salvo com sucesso.');    
+            ">salvar</button>
+    
+            <button onclick="
+                lista.sort((itemA, itemB) => itemA.nome.localeCompare(itemB.nome));
+                while (div.firstChild) {div.removeChild(div.firstChild);}
+                for (cadaItem of lista) {
+                    let novaLi = document.createElement('li');
+                    novaLi.textContent = JSON.stringify(cadaItem);
+                    div.appendChild(novaLi);
+                }
+                ">
+                ordenar
+            </button>
+                
+            <button onclick = "
+                let mostrarProduto = prompt('Aperte ok para mostar toda a lista, ou digite o nome do produto que deseja ver');
+                if (mostrarProduto === '') {
+            while (div.firstChild) {
+                div.removeChild(div.firstChild);
+            }
+                    for (let i = 0; i < lista.length; i++) {
+                      let novaLi = document.createElement('li');
+            novaLi.textContent = JSON.stringify(lista[i]);
+            div.appendChild(novaLi);
+    }
+                } else {
+                    let produtoEncontrado = lista.find(produto => produto.nome === mostrarProduto);
+                    mostrar.innerText = JSON.stringify(produtoEncontrado);
+                    if (!produtoEncontrado) {
+                        alert(`${mostrarProduto} não está na lista`);    
+                    }
+                }
+            ">mostrar</button>
+        </div>  
         <div id="div"></div>
         
         <script src="scripts/script.js">
