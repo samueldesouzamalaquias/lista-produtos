@@ -25,11 +25,23 @@
                 let preço = prompt('Preço: ');
                 produto['preço'] = `R$${preço}`
                 lista.push(produto)
-                let novoP = document.createElement('p');
-                novoP.textContent = JSON.stringify(produto);
-                div.appendChild(novoP);
+                let novaLi = document.createElement('li');
+                novaLi.textContent = JSON.stringify(produto);
+                div.appendChild(novaLi);
                 input.value = ''             
                     ">adicionar</button>
+
+        <button onclick="
+            lista.sort(itemA, itemB) => itemA.nome.localCompare(itemB.nome);
+            while (div.firstChild) {div.removeChild(div.firstChild);}
+            for (cadaItem of lista) {
+                let novaLi = document.createElement('li');
+                novaLi.textContent = JSON.stringify(cadaItem);
+                div.appendChild(novaLi);
+            }
+            ">
+            ordenar
+        </button>
 
         <button onclick = "
             let remover = input.value
