@@ -31,7 +31,7 @@
                 input.value = ''             
                     ">adicionar</button>
 
-        <button onclick = "
+        <button id="remover" onclick = "
             let remover = input.value
             lista = lista.filter((produto) => produto.nome != remover)
             mostrar.innerText = JSON.stringify(lista);
