@@ -43,7 +43,7 @@
         ">salvar</button>
 
         <button onclick="
-            lista.sort(itemA, itemB) => itemA.nome.localeCompare(itemB.nome);
+            lista.sort((itemA, itemB) => itemA.nome.localeCompare(itemB.nome));
             while (div.firstChild) {div.removeChild(div.firstChild);}
             for (cadaItem of lista) {
                 let novaLi = document.createElement('li');
